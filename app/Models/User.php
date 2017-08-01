@@ -1,6 +1,6 @@
 <?php
 
-namespace DroneBox;
+namespace DroneBox\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

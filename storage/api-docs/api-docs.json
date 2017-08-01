@@ -16,6 +16,50 @@
     "schemes": [
         "http"
     ],
-    "paths": {},
+    "paths": {
+        "/user/signup": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User registration",
+                "operationId": "userRegister",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    },
     "definitions": {}
 }

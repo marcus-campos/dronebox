@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => DroneBox\User::class,
+        'model' => DroneBox\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

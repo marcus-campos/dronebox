@@ -13,9 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+
+$userController = 'UserController@';
+Route::group(['prefix' => 'user'], function () use ($userController) {
+    Route::post('signup', $userController.'signUp');
+});
+
+
 Route::group(['prefix' => 'profile'], function () {
 
 });
+
 
 Route::group(['prefix' => 'image'], function () {
     Route::get('{id}');

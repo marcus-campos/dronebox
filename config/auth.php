@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => DroneBox\User::class,
+            'model' => DroneBox\Models\User::class,
         ],
 
         // 'users' => [

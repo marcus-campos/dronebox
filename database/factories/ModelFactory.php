@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(DroneBox\User::class, function (Faker\Generator $faker) {
+$factory->define(DroneBox\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
