@@ -18,12 +18,12 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->string('image_path');
             $table->integer('like')->default(0)->nullable();
-            $table->integer('profiles_id')->unsigned();
+            $table->integer('profile_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreign('profiles_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('profiles');
         });
     }
 

@@ -38,7 +38,15 @@ Route::group(['prefix' => 'user'], function () use ($userController) {
 
 $profileController = "ProfileController@";
 Route::group(['prefix' => 'profile'], function () use($profileController) {
-    Route::get('{id}', $profileController.'getProfile');
+    //GET
+    Route::get('{id}', $profileController.'getProfileById');
+    Route::get('slug/{slug}', $profileController.'getProfileBySlug');
+    Route::get('{id}/posts', $profileController.'getPosts');
+    Route::get('{id}/posts/', $profileController.'getPosts');
+
+    //POST
+
+    //PUT
     Route::put('update', $profileController.'update');
 });
 

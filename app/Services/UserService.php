@@ -35,7 +35,7 @@ class UserService
      */
     public function getUser($id)
     {
-        return Auth::onceUsingId($id)->with('profiles')->get();
+        return Auth::onceUsingId($id)->with('profiles')->get()[0];
     }
 
     /**

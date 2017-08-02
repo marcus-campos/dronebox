@@ -8,10 +8,18 @@
 namespace DroneBox\Services;
 
 
+use DroneBox\Models\Post;
+use DroneBox\Models\Profile;
+use Illuminate\Support\Facades\Auth;
+
 class PostService
 {
-    public function getProfileImages()
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getProfilePosts($id)
     {
-        return
+        return Post::where('profile_id', $id)->orderBy('created_at','DESC')->get();
     }
 }

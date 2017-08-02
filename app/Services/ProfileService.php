@@ -12,14 +12,36 @@ use DroneBox\Models\Profile;
 
 class ProfileService
 {
+    /**
+     * @var PostService
+     */
+    private $postService;
+
+    /**
+     * ProfileService constructor.
+     * @param PostService $postService
+     */
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
 
     /**
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */
-    public function getProfile($id)
+    public function getProfileById($id)
     {
         return Profile::find($id);
+    }
+
+    /**
+     * @param $slug
+     * @return \___PHPSTORM_HELPERS\static|mixed
+     */
+    public function getProfileBySlug($slug)
+    {
+        return Profile::where('slug', $slug)->get()[0];
     }
 
     /**
@@ -35,5 +57,14 @@ class ProfileService
             'slug' => uniqid(),
             'owner_id' => $id
         ]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getPosts($id)
+    {
+        return $this->postService->getProfilePosts($id);
     }
 }

@@ -17,4 +17,9 @@ class Profile extends Model
         'country',
         'owner_id'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'profile_id');
+    }
 }
