@@ -28,7 +28,7 @@ class ProfileController extends Controller
      *   summary="Retorna os dados do perfil",
      *   operationId="userInfo",
      *   produces={"application/json"},
-     *   tags={"User"},
+     *   tags={"Profile"},
      *   @SWG\Parameter(
      *     name="slug",
      *     in="path",
@@ -55,7 +55,7 @@ class ProfileController extends Controller
      *   summary="Retorna os dados do perfil",
      *   operationId="userInfo",
      *   produces={"application/json"},
-     *   tags={"User"},
+     *   tags={"Profile"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
@@ -82,7 +82,7 @@ class ProfileController extends Controller
      *   summary="Retorna os posts do perfil",
      *   operationId="userInfo",
      *   produces={"application/json"},
-     *   tags={"User"},
+     *   tags={"Profile"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
