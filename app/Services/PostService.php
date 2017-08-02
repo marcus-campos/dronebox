@@ -18,6 +18,15 @@ class PostService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
+    public function getPost($id)
+    {
+        return Post::find($id);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function getProfilePosts($id)
     {
         return Post::where('profile_id', $id)->orderBy('created_at','DESC')->get();

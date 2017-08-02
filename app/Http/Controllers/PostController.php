@@ -2,64 +2,37 @@
 
 namespace DroneBox\Http\Controllers;
 
-use DroneBox\Models\Profile;
+use DroneBox\Services\PostService;
 use DroneBox\Services\ProfileService;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class PostController extends Controller
 {
     /**
-     * @var ProfileService
+     * @var PostService
      */
-    private $profileService;
+    private $postService;
 
     /**
-     * ProfileController constructor.
-     * @param ProfileService $profileService
+     * PostController constructor.
+     * @param PostService $postService
      */
-    public function __construct(ProfileService $profileService)
+    public function __construct(PostService $postService)
     {
-        $this->profileService = $profileService;
+        $this->postService = $postService;
     }
 
     /**
      * @SWG\Get(
-     *   path="/profile/slug/{slug}",
-     *   summary="Retorna os dados do perfil",
+     *   path="/post/{id}",
+     *   summary="Retorna os dados do post escolhido",
      *   operationId="userInfo",
      *   produces={"application/json"},
-     *   tags={"Profile"},
-     *   @SWG\Parameter(
-     *     name="slug",
-     *     in="path",
-     *     description="Slug do usuário",
-     *     required=true,
-     *     type="integer"
-     *   ),
-     *   @SWG\Response(response=200, description="Successful operation"),
-     *   @SWG\Response(response=406, description="Not acceptable"),
-     *   @SWG\Response(response=500, description="Internal server error")
-     * )
-     * @param $slug
-     * @return mixed|static
-     */
-
-    public function getProfileBySlug($slug)
-    {
-        return $this->profileService->getProfileBySlug($slug);
-    }
-
-    /**
-     * @SWG\Get(
-     *   path="/profile/{id}",
-     *   summary="Retorna os dados do perfil",
-     *   operationId="userInfo",
-     *   produces={"application/json"},
-     *   tags={"Profile"},
+     *   tags={"Post"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
-     *     description="Id do usuário",
+     *     description="Id do post",
      *     required=true,
      *     type="integer"
      *   ),
@@ -68,16 +41,36 @@ class ProfileController extends Controller
      *   @SWG\Response(response=500, description="Internal server error")
      * )
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-
-    public function getProfileById($id)
+    public function getPost($id)
     {
-        return $this->profileService->getProfileById($id);
+        return $this->postService->getPost($id);
     }
 
-    public function update($id, $name)
+    /**
+     * @SWG\Get(
+     *   path="/post/profile/{id}",
+     *   summary="Retorna os posts do perfil",
+     *   operationId="userInfo",
+     *   produces={"application/json"},
+     *   tags={"Profile"},
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Id do perfil",
+     *     required=true,
+     *     type="integer"
+     *   ),
+     *   @SWG\Response(response=200, description="Successful operation"),
+     *   @SWG\Response(response=406, description="Not acceptable"),
+     *   @SWG\Response(response=500, description="Internal server error")
+     * )
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getProfilePosts($id)
     {
-
+        return $this->postService->getProfilePosts($id);
     }
 }

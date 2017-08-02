@@ -58,13 +58,4 @@ class ProfileService
             'owner_id' => $id
         ]);
     }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
-     */
-    public function getPosts($id)
-    {
-        return $this->postService->getProfilePosts($id);
-    }
 }

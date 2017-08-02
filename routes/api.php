@@ -41,13 +41,29 @@ Route::group(['prefix' => 'profile'], function () use($profileController) {
     //GET
     Route::get('{id}', $profileController.'getProfileById');
     Route::get('slug/{slug}', $profileController.'getProfileBySlug');
-    Route::get('{id}/posts', $profileController.'getPosts');
-    Route::get('{id}/posts/', $profileController.'getPosts');
 
     //POST
 
     //PUT
     Route::put('update', $profileController.'update');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Post Routes
+|--------------------------------------------------------------------------
+*/
+
+$postController = "PostController@";
+Route::group(['prefix' => 'post'], function () use($postController) {
+    //GET
+    Route::get('{id}', $postController.'getPost');
+    Route::get('profile/{id}', $postController.'getProfilePosts');
+
+    //POST
+
+    //PUT
 });
 
 /*
