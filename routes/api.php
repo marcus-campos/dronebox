@@ -13,17 +13,38 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
 
 $userController = 'UserController@';
 Route::group(['prefix' => 'user'], function () use ($userController) {
     Route::post('signup', $userController.'signUp');
+
+    Route::group(['prefix' => 'password'], function () use ($userController) {
+        Route::put('update', $userController.'update');
+        Route::put('reset', $userController.'reset');
+    });
 });
 
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::group(['prefix' => 'profile'], function () {
-
+$profileController = "ProfileController@";
+Route::group(['prefix' => 'profile'], function () use($profileController) {
+    Route::put('update', $profileController.'update');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Image Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::group(['prefix' => 'image'], function () {
     Route::get('{id}');
