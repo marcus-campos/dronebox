@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 $userController = 'UserController@';
 Route::group(['prefix' => 'user'], function () use ($userController) {
     Route::post('signup', $userController.'signUp');
+    Route::get('{id}', $userController.'getUser');
 
     Route::group(['prefix' => 'password'], function () use ($userController) {
         Route::put('update', $userController.'update');
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'user'], function () use ($userController) {
 
 $profileController = "ProfileController@";
 Route::group(['prefix' => 'profile'], function () use($profileController) {
+    Route::get('{id}', $profileController.'getProfile');
     Route::put('update', $profileController.'update');
 });
 

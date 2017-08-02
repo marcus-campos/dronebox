@@ -10,6 +10,7 @@ namespace DroneBox\Services;
 
 use DroneBox\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -27,6 +28,20 @@ class UserService
         $this->profileService = $profileService;
     }
 
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function getUser($id)
+    {
+        return Auth::onceUsingId($id)->with('profiles')->get();
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create(Request $request)
     {
         $user = User::create([

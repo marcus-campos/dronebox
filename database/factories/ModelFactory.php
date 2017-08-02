@@ -13,7 +13,18 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(DroneBox\Models\User::class, function (Faker\Generator $faker) {
-    static $password;
+    static $password = '987987';
+
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(DroneBox\Models\User::class, function (Faker\Generator $faker) {
+    static $password = '987987';
 
     return [
         'name' => $faker->name,

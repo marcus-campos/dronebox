@@ -22,8 +22,8 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "User registration",
-                "operationId": "userRegister",
+                "summary": "Registro de usu\u00e1rios",
+                "operationId": "userSignUp",
                 "produces": [
                     "application/json"
                 ],
@@ -45,6 +45,38 @@
                                 }
                             }
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Retorna os dados do usu\u00e1rio",
+                "operationId": "userInfo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usu\u00e1rio",
+                        "required": true,
+                        "type": "integer"
                     }
                 ],
                 "responses": {

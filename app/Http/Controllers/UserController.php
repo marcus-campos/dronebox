@@ -2,7 +2,6 @@
 
 namespace DroneBox\Http\Controllers;
 
-use DroneBox\Models\User;
 use DroneBox\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -22,11 +21,37 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+
+    /**
+     * @SWG\Get(
+     *   path="/user/{id}",
+     *   summary="Retorna os dados do usuário",
+     *   operationId="userInfo",
+     *   produces={"application/json"},
+     *   tags={"User"},
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Id do usuário",
+     *     required=true,
+     *     type="integer"
+     *   ),
+     *   @SWG\Response(response=200, description="Successful operation"),
+     *   @SWG\Response(response=406, description="Not acceptable"),
+     *   @SWG\Response(response=500, description="Internal server error")
+     * )
+     */
+
+    public function getUser($id)
+    {
+        return $this->userService->getUser($id);
+    }
+
     /**
      * @SWG\Post(
      *   path="/user/signup",
-     *   summary="User registration",
-     *   operationId="userRegister",
+     *   summary="Registro de usuários",
+     *   operationId="userSignUp",
      *   produces={"application/json"},
      *   tags={"User"},
      *   @SWG\Parameter(
@@ -47,5 +72,10 @@ class UserController extends Controller
     public function signUp(Request $request)
     {
         return $this->userService->create($request);
+    }
+
+    public function signIn(Request $request)
+    {
+        //return $this->userService->create($request);
     }
 }
