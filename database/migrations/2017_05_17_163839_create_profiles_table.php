@@ -25,6 +25,7 @@ class CreateProfilesTable extends Migration
             $table->string('country')->nullable();
             $table->integer('owner_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('profiles', function (Blueprint $table) {

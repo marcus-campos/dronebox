@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->integer('like')->default(0)->nullable();
             $table->integer('profile_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('posts', function (Blueprint $table) {

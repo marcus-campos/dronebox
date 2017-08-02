@@ -18,6 +18,7 @@ class CreateContactsTable extends Migration
             $table->integer('requester_id')->unsigned();
             $table->integer('receiver_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('contacts', function (Blueprint $table) {

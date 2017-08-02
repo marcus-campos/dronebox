@@ -60,10 +60,12 @@ Route::group(['prefix' => 'post'], function () use($postController) {
     //GET
     Route::get('{id}', $postController.'getPost');
     Route::get('profile/{id}', $postController.'getProfilePosts');
-
     //POST
-
+    Route::post('/', $postController.'store');
     //PUT
+    Route::put('/', $postController.'update');
+    //DELETE
+    Route::delete('{id}', $postController.'delete');
 });
 
 /*

@@ -17,13 +17,120 @@
         "http"
     ],
     "paths": {
+        "/post/{id}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Retorna os dados do post escolhido",
+                "operationId": "postInfo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do post",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/post/profile/{id}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Retorna os posts do perfil",
+                "operationId": "postProfileInfo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do perfil",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/post": {
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Cadastra a publica\u00e7\u00e3o",
+                "operationId": "post",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "description": {
+                                    "type": "string"
+                                },
+                                "image_path": {
+                                    "type": "string"
+                                },
+                                "profile_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
         "/profile/slug/{slug}": {
             "get": {
                 "tags": [
                     "Profile"
                 ],
                 "summary": "Retorna os dados do perfil",
-                "operationId": "userInfo",
+                "operationId": "profileSlugInfo",
                 "produces": [
                     "application/json"
                 ],
@@ -55,39 +162,7 @@
                     "Profile"
                 ],
                 "summary": "Retorna os dados do perfil",
-                "operationId": "userInfo",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id do usu\u00e1rio",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/profile/{id}/posts": {
-            "get": {
-                "tags": [
-                    "Profile"
-                ],
-                "summary": "Retorna os posts do perfil",
-                "operationId": "userInfo",
+                "operationId": "profileInfo",
                 "produces": [
                     "application/json"
                 ],

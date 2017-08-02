@@ -26,7 +26,7 @@ class ProfileController extends Controller
      * @SWG\Get(
      *   path="/profile/slug/{slug}",
      *   summary="Retorna os dados do perfil",
-     *   operationId="userInfo",
+     *   operationId="profileSlugInfo",
      *   produces={"application/json"},
      *   tags={"Profile"},
      *   @SWG\Parameter(
@@ -53,7 +53,7 @@ class ProfileController extends Controller
      * @SWG\Get(
      *   path="/profile/{id}",
      *   summary="Retorna os dados do perfil",
-     *   operationId="userInfo",
+     *   operationId="profileInfo",
      *   produces={"application/json"},
      *   tags={"Profile"},
      *   @SWG\Parameter(
