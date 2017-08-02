@@ -54,7 +54,7 @@ class PostController extends Controller
      *   summary="Retorna os posts do perfil",
      *   operationId="userInfo",
      *   produces={"application/json"},
-     *   tags={"Profile"},
+     *   tags={"Post"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
