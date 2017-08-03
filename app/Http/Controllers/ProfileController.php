@@ -106,7 +106,7 @@ class ProfileController extends Controller
      *   summary="Cadastra a publicação",
      *   operationId="profileUpdate",
      *   produces={"application/json"},
-     *   tags={"Post"},
+     *   tags={"Profile"},
      *   @SWG\Parameter(
      *     name="body",
      *     in="body",
