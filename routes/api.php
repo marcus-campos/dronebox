@@ -23,6 +23,7 @@ const USER_CONTROLLER = 'UserController@';
 const PROFILE_CONTROLLER = "ProfileController@";
 const POST_CONTROLLER = "PostController@";
 const FOLLOWER_CONTROLLER = "FollowerController@";
+const TIMELINE_CONTROLLER = "TimelineController@";
 
 /*
 |--------------------------------------------------------------------------
@@ -94,4 +95,15 @@ Route::group(['prefix' => 'follow'], function () {
     Route::post('/', FOLLOWER_CONTROLLER.'store');
     //DELETE
     Route::delete('{id}', FOLLOWER_CONTROLLER.'delete');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Timeline Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'timeline'], function () {
+    //GET
+    Route::get('profile/{id}', TIMELINE_CONTROLLER.'feed');
 });
