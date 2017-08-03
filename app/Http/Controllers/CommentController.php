@@ -25,9 +25,9 @@ class CommentController extends Controller
      * @SWG\Get(
      *   path="/comment/{id}",
      *   summary="Retorna os dados do comentario",
-     *   operationId="profileInfo",
+     *   operationId="commentInfo",
      *   produces={"application/json"},
-     *   tags={"Profile"},
+     *   tags={"Comment"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
@@ -51,9 +51,9 @@ class CommentController extends Controller
      * @SWG\Get(
      *   path="/comment/post/{id}",
      *   summary="Retorna os comentarios do post",
-     *   operationId="profileInfo",
+     *   operationId="commentPostInfo",
      *   produces={"application/json"},
-     *   tags={"Profile"},
+     *   tags={"Comment"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
@@ -133,7 +133,7 @@ class CommentController extends Controller
      *   summary="Apaga um comentario",
      *   operationId="commentDelete",
      *   produces={"application/json"},
-     *   tags={"Profile"},
+     *   tags={"Comment"},
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",

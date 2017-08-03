@@ -28,7 +28,7 @@ class CommentService
      */
     public function comments($id)
     {
-        return Comment::where('post_id', $id);
+        return Comment::where('post_id', $id)->with('post');
     }
 
     /**
