@@ -86,7 +86,7 @@ class CommentController extends Controller
      *     required=true,
      *     @SWG\Schema(
      *         @SWG\Property(property="content", type="string",),
-     *         @SWG\Property(property="id", type="integer",),
+     *         @SWG\Property(property="post_id", type="integer",),
      *     ),
      *   ),
      *   @SWG\Response(response=200, description="Successful operation"),
@@ -112,7 +112,7 @@ class CommentController extends Controller
      *     required=true,
      *     @SWG\Schema(
      *         @SWG\Property(property="description", type="string",),
-     *         @SWG\Property(property="post_id", type="integer",),
+     *         @SWG\Property(property="id", type="integer",),
      *     ),
      *   ),
      *   @SWG\Response(response=200, description="Successful operation"),
