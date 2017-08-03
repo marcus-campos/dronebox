@@ -2,7 +2,6 @@
 
 namespace DroneBox\Http\Controllers;
 
-use DroneBox\Models\Profile;
 use DroneBox\Services\ProfileService;
 use Illuminate\Http\Request;
 
@@ -43,10 +42,9 @@ class ProfileController extends Controller
      * @param $slug
      * @return mixed|static
      */
-
-    public function getProfileBySlug($slug)
+    public function profileBySlug($slug)
     {
-        return $this->profileService->getProfileBySlug($slug);
+        return $this->profileService->profileBySlug($slug);
     }
 
     /**
@@ -70,14 +68,43 @@ class ProfileController extends Controller
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */
-
-    public function getProfileById($id)
+    public function profileById($id)
     {
-        return $this->profileService->getProfileById($id);
+        return $this->profileService->profileById($id);
     }
 
-    public function update($id, $name)
+    /**
+     * @SWG\Put(
+     *   path="/profile",
+     *   summary="Cadastra a publicação",
+     *   operationId="profileUpdate",
+     *   produces={"application/json"},
+     *   tags={"Post"},
+     *   @SWG\Parameter(
+     *     name="body",
+     *     in="body",
+     *     required=true,
+     *     @SWG\Schema(
+     *         @SWG\Property(property="id", type="integer",),
+     *         @SWG\Property(property="name", type="string",),
+     *         @SWG\Property(property="birthday", type="string",),
+     *         @SWG\Property(property="description", type="string",),
+     *         @SWG\Property(property="photo", type="string",),
+     *         @SWG\Property(property="slug", type="string",),
+     *         @SWG\Property(property="city", type="string",),
+     *         @SWG\Property(property="region", type="string",),
+     *         @SWG\Property(property="country", type="string",),
+     *     ),
+     *   ),
+     *   @SWG\Response(response=200, description="Successful operation"),
+     *   @SWG\Response(response=406, description="Not acceptable"),
+     *   @SWG\Response(response=500, description="Internal server error")
+     * )
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\JsonResponse|null|static|static[]
+     */
+    public function update(Request $request)
     {
-
+       return $this->profileService->update($request);
     }
 }

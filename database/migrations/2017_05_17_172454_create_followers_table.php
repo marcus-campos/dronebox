@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactsTable extends Migration
+class CreateFollowersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('followers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('requester_id')->unsigned();
             $table->integer('receiver_id')->unsigned();
@@ -21,7 +21,7 @@ class CreateContactsTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::table('contacts', function (Blueprint $table) {
+        Schema::table('followers', function (Blueprint $table) {
             $table->foreign('requester_id')->references('id')->on('profiles');
             $table->foreign('receiver_id')->references('id')->on('profiles');
         });
@@ -34,6 +34,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('followers');
     }
 }

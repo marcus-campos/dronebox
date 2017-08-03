@@ -42,9 +42,9 @@ class UserController extends Controller
      * )
      */
 
-    public function getUser($id)
+    public function user($id)
     {
-        return $this->userService->getUser($id);
+        return $this->userService->user($id);
     }
 
     /**

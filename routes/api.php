@@ -15,18 +15,28 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
+| Constants
+|--------------------------------------------------------------------------
+*/
+
+const USER_CONTROLLER = 'UserController@';
+const PROFILE_CONTROLLER = "ProfileController@";
+const POST_CONTROLLER = "PostController@";
+const FOLLOWER_CONTROLLER = "FollowerController@";
+
+/*
+|--------------------------------------------------------------------------
 | User Routes
 |--------------------------------------------------------------------------
 */
 
-$userController = 'UserController@';
-Route::group(['prefix' => 'user'], function () use ($userController) {
-    Route::post('signup', $userController.'signUp');
-    Route::get('{id}', $userController.'getUser');
+Route::group(['prefix' => 'user'], function () {
+    Route::post('signup', USER_CONTROLLER.'signUp');
+    Route::get('{id}', USER_CONTROLLER.'user');
 
-    Route::group(['prefix' => 'password'], function () use ($userController) {
-        Route::put('update', $userController.'update');
-        Route::put('reset', $userController.'reset');
+    Route::group(['prefix' => 'password'], function () {
+        Route::put('update', USER_CONTROLLER.'update');
+        Route::put('reset', USER_CONTROLLER.'reset');
     });
 });
 
@@ -36,16 +46,15 @@ Route::group(['prefix' => 'user'], function () use ($userController) {
 |--------------------------------------------------------------------------
 */
 
-$profileController = "ProfileController@";
-Route::group(['prefix' => 'profile'], function () use($profileController) {
+Route::group(['prefix' => 'profile'], function () {
     //GET
-    Route::get('{id}', $profileController.'getProfileById');
-    Route::get('slug/{slug}', $profileController.'getProfileBySlug');
+    Route::get('{id}', PROFILE_CONTROLLER.'profileById');
+    Route::get('slug/{slug}', PROFILE_CONTROLLER.'profileBySlug');
 
     //POST
 
     //PUT
-    Route::put('update', $profileController.'update');
+    Route::put('update', PROFILE_CONTROLLER.'update');
 });
 
 
@@ -55,28 +64,33 @@ Route::group(['prefix' => 'profile'], function () use($profileController) {
 |--------------------------------------------------------------------------
 */
 
-$postController = "PostController@";
-Route::group(['prefix' => 'post'], function () use($postController) {
+Route::group(['prefix' => 'post'], function () {
     //GET
-    Route::get('{id}', $postController.'getPost');
-    Route::get('profile/{id}', $postController.'getProfilePosts');
+    Route::get('{id}', POST_CONTROLLER.'post');
+    Route::get('profile/{id}', POST_CONTROLLER.'profilePosts');
     //POST
-    Route::post('/', $postController.'store');
+    Route::post('/', POST_CONTROLLER.'store');
     //PUT
-    Route::put('/', $postController.'update');
+    Route::put('/', POST_CONTROLLER.'update');
     //DELETE
-    Route::delete('{id}', $postController.'delete');
+    Route::delete('{id}', POST_CONTROLLER.'delete');
 });
 
 /*
 |--------------------------------------------------------------------------
-| Image Routes
+| Follower Routes
 |--------------------------------------------------------------------------
 */
 
-Route::group(['prefix' => 'image'], function () {
-    Route::get('{id}');
-    Route::post('/');
-    Route::put('{id}');
-    Route::delete('{id}');
+Route::group(['prefix' => 'follow'], function () {
+    //GET
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('{id}/followers', FOLLOWER_CONTROLLER.'followers');
+        Route::get('{id}/following', FOLLOWER_CONTROLLER.'following');
+    });
+
+    //POST
+    Route::post('/', FOLLOWER_CONTROLLER.'store');
+    //DELETE
+    Route::delete('{id}', FOLLOWER_CONTROLLER.'delete');
 });

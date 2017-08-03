@@ -43,9 +43,9 @@ class PostController extends Controller
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getPost($id)
+    public function post($id)
     {
-        return $this->postService->getPost($id);
+        return $this->postService->post($id);
     }
 
     /**
@@ -69,9 +69,9 @@ class PostController extends Controller
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getProfilePosts($id)
+    public function profilePosts($id)
     {
-        return $this->postService->getProfilePosts($id);
+        return $this->postService->profilePosts($id);
     }
 
     /**

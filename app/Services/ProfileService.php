@@ -9,6 +9,7 @@ namespace DroneBox\Services;
 
 
 use DroneBox\Models\Profile;
+use Illuminate\Http\Request;
 
 class ProfileService
 {
@@ -30,7 +31,7 @@ class ProfileService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */
-    public function getProfileById($id)
+    public function profileById($id)
     {
         return Profile::find($id);
     }
@@ -39,7 +40,7 @@ class ProfileService
      * @param $slug
      * @return \___PHPSTORM_HELPERS\static|mixed
      */
-    public function getProfileBySlug($slug)
+    public function profileBySlug($slug)
     {
         return Profile::where('slug', $slug)->get()[0];
     }
@@ -57,5 +58,19 @@ class ProfileService
             'slug' => uniqid(),
             'owner_id' => $id
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\JsonResponse|null|static|static[]
+     */
+    public function update(Request $request)
+    {
+        if(Profile::find($request['id'])->update($request->all()))
+            return Profile::find($request['id']);
+        else
+            return response()->json([
+                'message' => 'Can\'t update this profile'
+            ], 400);
     }
 }

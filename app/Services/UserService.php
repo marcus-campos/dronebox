@@ -33,7 +33,7 @@ class UserService
      * @param $id
      * @return bool
      */
-    public function getUser($id)
+    public function user($id)
     {
         return Auth::onceUsingId($id)->with('profiles')->get()[0];
     }

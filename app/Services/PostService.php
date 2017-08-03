@@ -19,7 +19,7 @@ class PostService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getPost($id)
+    public function post($id)
     {
         return Post::find($id);
     }
@@ -28,7 +28,7 @@ class PostService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getProfilePosts($id)
+    public function profilePosts($id)
     {
         return Post::where('profile_id', $id)->orderBy('created_at','DESC')->get();
     }
