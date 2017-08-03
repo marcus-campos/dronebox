@@ -111,7 +111,7 @@ class CommentController extends Controller
      *     in="body",
      *     required=true,
      *     @SWG\Schema(
-     *         @SWG\Property(property="description", type="string",),
+     *         @SWG\Property(property="content", type="string",),
      *         @SWG\Property(property="id", type="integer",),
      *     ),
      *   ),
