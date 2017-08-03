@@ -23,6 +23,33 @@ class ProfileController extends Controller
 
     /**
      * @SWG\Get(
+     *   path="/profile/search/{search}",
+     *   summary="Retorna os dados do perfil",
+     *   operationId="profileSearch",
+     *   produces={"application/json"},
+     *   tags={"Profile"},
+     *   @SWG\Parameter(
+     *     name="search",
+     *     in="path",
+     *     description="A pesquisa pode ser feita por nome ou slug",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="Successful operation"),
+     *   @SWG\Response(response=406, description="Not acceptable"),
+     *   @SWG\Response(response=500, description="Internal server error")
+     * )
+     * @param $search
+     * @return mixed|static
+     * @internal param $slug
+     */
+    public function search($search)
+    {
+        return $this->profileService->search($search);
+    }
+
+    /**
+     * @SWG\Get(
      *   path="/profile/slug/{slug}",
      *   summary="Retorna os dados do perfil",
      *   operationId="profileSlugInfo",

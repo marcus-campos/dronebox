@@ -28,6 +28,15 @@ class ProfileService
     }
 
     /**
+     * @param $search
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function search($search)
+    {
+        return Profile::where('name', 'like', '%'.$search.'%')->orWhere('slug', $search)->get();
+    }
+
+    /**
      * @param $id
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */

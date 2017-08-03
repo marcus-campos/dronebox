@@ -50,6 +50,7 @@ Route::group(['prefix' => 'profile'], function () {
     //GET
     Route::get('{id}', PROFILE_CONTROLLER.'profileById');
     Route::get('slug/{slug}', PROFILE_CONTROLLER.'profileBySlug');
+    Route::get('search/{search}', PROFILE_CONTROLLER.'search');
 
     //POST
 
