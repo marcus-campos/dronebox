@@ -40,6 +40,26 @@ class FollowerService
      */
     public function store(Request $request)
     {
-        return Follower::create($request->all());
+        $follower = Follower::withTrashed()->firstOrCreate($request->all());
+        if($follower->restore())
+            return $follower;
+        else
+            return response()->json([
+                'message' => 'Can\'t store this follower'
+            ], 400);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\JsonResponse|null|static|static[]
+     */
+    public function delete($id)
+    {
+        if(Follower::destroy($id))
+            return Follower::withTrashed()->find($id);
+        else
+            return response()->json([
+                'message' => 'Can\'t delete this follower'
+            ], 400);
     }
 }

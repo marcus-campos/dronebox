@@ -108,4 +108,34 @@ class FollowerController extends Controller
     {
         return $this->followerService->store($request);
     }
+
+    /**
+     * @SWG\Delete(
+     *   path="/follow/{id}",
+     *   summary="Permite deletar um relacionamento",
+     *   operationId="followDelete",
+     *   produces={"application/json"},
+     *   tags={"Follow"},
+     *   @SWG\Parameter(
+     *     name="body",
+     *     in="body",
+     *     required=true,
+     *     @SWG\Schema(
+     *         @SWG\Property(property="requester_id", type="integer",),
+     *         @SWG\Property(property="receiver_id", type="integer",),
+     *     ),
+     *   ),
+     *   @SWG\Response(response=200, description="Successful operation"),
+     *   @SWG\Response(response=406, description="Not acceptable"),
+     *   @SWG\Response(response=500, description="Internal server error")
+     * )
+     * @param $id
+     * @return bool
+     * @internal param $id
+     */
+
+    public function delete($id)
+    {
+        return $this->followerService->delete($id);
+    }
 }

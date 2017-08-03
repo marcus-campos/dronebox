@@ -24,6 +24,7 @@ const PROFILE_CONTROLLER = "ProfileController@";
 const POST_CONTROLLER = "PostController@";
 const FOLLOWER_CONTROLLER = "FollowerController@";
 const TIMELINE_CONTROLLER = "TimelineController@";
+const COMMENT_CONTROLLER = "CommentController@";
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,24 @@ Route::group(['prefix' => 'post'], function () {
     Route::put('/', POST_CONTROLLER.'update');
     //DELETE
     Route::delete('{id}', POST_CONTROLLER.'delete');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Comment Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'comment'], function () {
+    //GET
+    Route::get('{id}', COMMENT_CONTROLLER.'comment');
+    Route::get('post/{id}', COMMENT_CONTROLLER.'comments');
+    //POST
+    Route::post('/', COMMENT_CONTROLLER.'store');
+    //PUT
+    Route::put('/', COMMENT_CONTROLLER.'update');
+    //DELETE
+    Route::delete('{id}', COMMENT_CONTROLLER.'delete');
 });
 
 /*
