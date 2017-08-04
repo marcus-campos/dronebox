@@ -103,7 +103,7 @@ class ProfileController extends Controller
     /**
      * @SWG\Put(
      *   path="/profile",
-     *   summary="Cadastra a publicação",
+     *   summary="Atualiza os dados do perfil",
      *   operationId="profileUpdate",
      *   produces={"application/json"},
      *   tags={"Profile"},
