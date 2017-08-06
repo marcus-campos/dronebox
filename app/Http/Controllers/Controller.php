@@ -16,8 +16,8 @@ class Controller extends BaseController
      *   basePath="/api",
      *   @SWG\Info(
      *     version="0.0.1",
-     *     title="Documentação do gerador de boletos",
-     *     description="Esta é uma documentação simples do sistema gerador de boletos.",
+     *     title="SocialBox",
+     *     description="Esta é uma documentação simples SocialBox.",
      *     @SWG\Contact(
      *       email="campos.v.marcus@gmail.com"
      *     ),
